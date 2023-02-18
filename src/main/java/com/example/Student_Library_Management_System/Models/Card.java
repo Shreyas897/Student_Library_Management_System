@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="card")
@@ -23,7 +25,11 @@ public class Card {
     @JoinColumn
     private Student student;
 
+    @OneToMany(mappedBy = "card",cascade = CascadeType.ALL)
+    private List<Book> booksIssued;
+
     public Card() {
+        booksIssued=new ArrayList<>();
     }
 
     public Student getStudent() {
@@ -64,5 +70,13 @@ public class Card {
 
     public void setCardStatus(CardStatus cardStatus) {
         this.cardStatus = cardStatus;
+    }
+
+    public List<Book> getBooksIssued() {
+        return booksIssued;
+    }
+
+    public void setBooksIssued(List<Book> booksIssued) {
+        this.booksIssued = booksIssued;
     }
 }

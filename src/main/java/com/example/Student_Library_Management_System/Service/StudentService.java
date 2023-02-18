@@ -20,4 +20,14 @@ public class StudentService {
         return "Student Created Successfully";
 
     }
+    public String getNameByEmail(String email){
+        Student student= studentRepository.findByEmail(email);
+        return student.getName();
+    }
+    public String updateMobNo(Student newStudent){
+        Student oldStudent= studentRepository.findById(newStudent.getId()).get();
+        oldStudent.setMob_no(newStudent.getMob_no());
+        studentRepository.save(oldStudent);
+        return "Mobile No updated";
+    }
 }
