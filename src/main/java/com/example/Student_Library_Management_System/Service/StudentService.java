@@ -1,5 +1,6 @@
 package com.example.Student_Library_Management_System.Service;
 
+import com.example.Student_Library_Management_System.DTOs.StudentUpdateMobNoDtr;
 import com.example.Student_Library_Management_System.Enums.CardStatus;
 import com.example.Student_Library_Management_System.Models.Card;
 import com.example.Student_Library_Management_System.Models.Student;
@@ -24,10 +25,10 @@ public class StudentService {
         Student student= studentRepository.findByEmail(email);
         return student.getName();
     }
-    public String updateMobNo(Student newStudent){
-        Student oldStudent= studentRepository.findById(newStudent.getId()).get();
-        oldStudent.setMob_no(newStudent.getMob_no());
-        studentRepository.save(oldStudent);
+    public String updateMobNo(StudentUpdateMobNoDtr studentUpdateMobNoDtr){
+        Student student= studentRepository.findById(studentUpdateMobNoDtr.getId()).get();
+        student.setMob_no(studentUpdateMobNoDtr.getMob_no());
+        studentRepository.save(student);
         return "Mobile No updated";
     }
 }

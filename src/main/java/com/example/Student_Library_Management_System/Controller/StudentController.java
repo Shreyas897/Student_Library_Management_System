@@ -1,5 +1,6 @@
 package com.example.Student_Library_Management_System.Controller;
 
+import com.example.Student_Library_Management_System.DTOs.StudentUpdateMobNoDtr;
 import com.example.Student_Library_Management_System.Models.Student;
 import com.example.Student_Library_Management_System.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class StudentController {
         return studentService.getNameByEmail(email);
     }
     @PutMapping("update_MobNo")
-    public String updateMobNo(@RequestBody Student student){
-        return studentService.updateMobNo(student);
+    public String updateMobNo(@RequestBody StudentUpdateMobNoDtr studentUpdateMobNoDtr){
+        return studentService.updateMobNo(studentUpdateMobNoDtr);
     }
 }
